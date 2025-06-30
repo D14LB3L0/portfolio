@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
+import Badge from "../components/Badge.astro";
+---
+
+<Layout>
+  <main>
+    <section class="w-full lg:w-[740px] mx-auto py-44">
+      <img
+        src="https://placehold.co/600x600"
+        alt="profile photo"
+        class="rounded-full h-12 w-12 mb-4"
+      />
+      <h1 class="text-white text-5xl font-bold flex gap-x-4 pb-10">
+        Hey, I'm Diego Bermudez <a
+          href="https://www.linkedin.com/in/diego-bermudez-lopez-b55885286/"
+          target="_blank"
+          rel="noopener"
+          class="flex justify-center items-center"
+        >
+          <div class="flex justify-center items-center">
+            <Badge>Available to work</Badge>
+          </div>
+        </a>
+      </h1>
+      <h2 class="text-2xl text-wrap">
+        <span>One year of experience.</span>
+        <span class="text-yellow-200/90">
+          Full-stack developer specialized in scalable web apps.</span
+        >
+        <span class="text-red-200/90"> From Lima, Perú 🇵🇪.</span>
+        <span class="opacity-75">
+          Focused on clean code, DevOps, and cloud deployments.
+        </span>
+      </h2>
+      <ul>
+        <li>
+          <a href="https://www.linkedin.com/in/diego-bermudez-lopez-b55885286/" target="_blank" rel="noopener" class="flex items-center gap-x-2">
+            <LinkedInIcon class="w-6 h-6"/>
+            Linkedin
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+</Layout>
