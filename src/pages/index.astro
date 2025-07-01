@@ -1,12 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Experience from "../components/Experience.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
 import Badge from "../components/Badge.astro";
+import SocialPill from "../components/SocialPill.astro";
+import GitHubIcon from "../components/icons/GitHubIcon.astro";
+import MailIcon from "../components/icons/MailIcon.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import BriefCaseIcon from "../components/icons/BriefCaseIcon.astro";
 ---
 
 <Layout>
   <main>
-    <section class="w-full lg:w-[740px] mx-auto py-44">
+    <SectionContainer class="py-44 pb-24">
       <img
         src="https://placehold.co/600x600"
         alt="profile photo"
@@ -34,14 +40,36 @@ import Badge from "../components/Badge.astro";
           Focused on clean code, DevOps, and cloud deployments.
         </span>
       </h2>
-      <ul>
-        <li>
-          <a href="https://www.linkedin.com/in/diego-bermudez-lopez-b55885286/" target="_blank" rel="noopener" class="flex items-center gap-x-2">
-            <LinkedInIcon class="w-6 h-6"/>
-            Linkedin
-          </a>
-        </li>
-      </ul>
-    </section>
+      <nav class="flex gap-x-4 mt-8">
+        <SocialPill
+          href="https://www.linkedin.com/in/diego-bermudez-lopez-b55885286"
+        >
+          <LinkedInIcon class="size-6" />
+          Linkedin
+        </SocialPill>
+        <SocialPill
+          href="https://github.com/D14LB3L0?tab=overview&from=2025-05-01&to=2025-05-04"
+        >
+          <GitHubIcon class="size-6" />
+          GitHub
+        </SocialPill>
+        <SocialPill
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=diegobdev2024@gmail.com&su=Work%20Opportunity&body=Hello%20Diego,%0A%0AI%20would%20like%20to%20get%20in%20touch%20regarding%20a%20job%20opportunity."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <MailIcon class="size-6" />
+          diegobdev2024@gmail.com
+        </SocialPill>
+      </nav>
+    </SectionContainer>
+
+    <SectionContainer id="experience">
+      <h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center text-white">
+        <BriefCaseIcon class="size-7" />
+        Work experience
+      </h2>
+      <Experience />
+    </SectionContainer>
   </main>
 </Layout>
