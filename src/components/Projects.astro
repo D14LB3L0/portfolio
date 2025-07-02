@@ -1,0 +1,94 @@
+---
+import ReactIcon from "./icons/ReactIcon.astro";
+import ShadcnIcon from "./icons/ShadcnIcon.astro";
+import TailwindIcon from "./icons/TailwindIcon.astro";
+import TypeScriptIcon from "./icons/TypeScriptIcon.astro";
+import ZustandIcon from "./icons/ZustandIcon.astro";
+
+interface Tag {
+  name: string;
+  class: string;
+  icon: any; // Puede ser un componente SVG o JSX
+}
+
+interface Project {
+  title: string;
+  description: string;
+  link?: string;
+  github: string;
+  image: string;
+  tags: Tag[];
+}
+const TAGS = {
+  REACT: {
+    name: "React",
+    class: "bg-[#0d1117] text-[#61dafb]",
+    icon: ReactIcon,
+  },
+  TYPESCRIPT: {
+    name: "TypeScript",
+    class: "bg-[#002e52] text-white",
+    icon: TypeScriptIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: TailwindIcon,
+  },
+  SHADCN: {
+    name: "Shadcn UI",
+    class: "bg-[#1c1c1c] text-white",
+    icon: ShadcnIcon,
+  },
+  ZUSTAND: {
+    name: "Zustand",
+    class: "bg-[#231f20] text-[#f5a623]",
+    icon: ZustandIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "EcoTrueke",
+    description:
+      "EcoTrueke is a web platform that allows users to exchange second-hand products through a proposal-based system. Users can browse products, send trade offers, and manage their exchange requests with other members.",
+    github: "https://github.com/D14LB3L0/ecoTrueke-webapp",
+    image: "/projects/ecoTrueke.webp",
+    tags: [
+      TAGS.REACT,
+      TAGS.TYPESCRIPT,
+      TAGS.ZUSTAND,
+      TAGS.SHADCN,
+      TAGS.TAILWIND,
+    ],
+  },
+];
+---
+
+{
+  PROJECTS.map((project: Project) => (
+    <article>
+      <h3 class="text-2xl font-semibold text-yellow-200 mb-2">
+        {project.title}
+      </h3>
+      <p class="text-lg mb-4 text-pretty">{project.description}</p>
+      <ul class="flex gap-x-2 flex-row mb-2">
+        {project.tags.map((tag) => (
+          <li>
+            <span
+              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+            >
+              <tag.icon class="size-4" />
+              {tag.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <img
+        class="rounded shadow-2xl shadow-white/10"
+        src={project.image}
+        alt={`Captura de pantalla del proyecto ${project.title}`}
+      />
+    </article>
+  ))
+}

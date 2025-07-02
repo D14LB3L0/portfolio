@@ -8,17 +8,19 @@ import GitHubIcon from "../components/icons/GitHubIcon.astro";
 import MailIcon from "../components/icons/MailIcon.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 import BriefCaseIcon from "../components/icons/BriefCaseIcon.astro";
+import CodeIcon from "../components/icons/CodeIcon.astro";
+import Projects from "../components/Projects.astro";
 ---
 
 <Layout>
-  <main>
-    <SectionContainer class="py-44 pb-24">
+  <main class="px-2">
+    <SectionContainer class="py-44 pb-32">
       <img
         src="https://placehold.co/600x600"
         alt="profile photo"
         class="rounded-full h-12 w-12 mb-4"
       />
-      <h1 class="text-white text-5xl font-bold flex gap-x-4 pb-10">
+      <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex gap-x-4 pb-6 lg:pb-10">
         Hey, I'm Diego Bermudez <a
           href="https://www.linkedin.com/in/diego-bermudez-lopez-b55885286/"
           target="_blank"
@@ -30,7 +32,7 @@ import BriefCaseIcon from "../components/icons/BriefCaseIcon.astro";
           </div>
         </a>
       </h1>
-      <h2 class="text-2xl text-wrap">
+      <h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]">
         <span>One year of experience.</span>
         <span class="text-yellow-200/90">
           Full-stack developer specialized in scalable web apps.</span
@@ -40,17 +42,17 @@ import BriefCaseIcon from "../components/icons/BriefCaseIcon.astro";
           Focused on clean code, DevOps, and cloud deployments.
         </span>
       </h2>
-      <nav class="flex gap-x-4 mt-8">
+      <nav class="flex gap-4 mt-8 flex-wrap">
         <SocialPill
           href="https://www.linkedin.com/in/diego-bermudez-lopez-b55885286"
         >
-          <LinkedInIcon class="size-6" />
+          <LinkedInIcon class="size-4 lg:size-6" />
           Linkedin
         </SocialPill>
         <SocialPill
           href="https://github.com/D14LB3L0?tab=overview&from=2025-05-01&to=2025-05-04"
         >
-          <GitHubIcon class="size-6" />
+          <GitHubIcon class="size-4 lg:size-6" />
           GitHub
         </SocialPill>
         <SocialPill
@@ -58,18 +60,26 @@ import BriefCaseIcon from "../components/icons/BriefCaseIcon.astro";
           target="_blank"
           rel="noopener noreferrer"
         >
-          <MailIcon class="size-6" />
+          <MailIcon class="size-4 lg:size-6" />
           diegobdev2024@gmail.com
         </SocialPill>
       </nav>
     </SectionContainer>
 
     <SectionContainer id="experience">
-      <h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center text-white">
+      <h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-white">
         <BriefCaseIcon class="size-7" />
         Work experience
       </h2>
       <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="projects">
+      <h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-white">
+        <CodeIcon class="size-7" />
+        Projects
+      </h2>
+      <Projects />
     </SectionContainer>
   </main>
 </Layout>
