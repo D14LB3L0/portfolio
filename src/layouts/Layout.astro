@@ -9,18 +9,19 @@ import Footer from "../components/Footer.astro";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Portfolio of Diego Bermudez – Web Developer and Programmer</title>
   </head>
-  <body>
+  <body class="relative min-h-screen bg-neutral-950">
     <div
-      class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+      class="pointer-events-none fixed inset-0 -z-10 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] bg-no-repeat bg-cover"
     >
     </div>
     <Header />
     <slot />
-    <Footer/>
+    <Footer />
   </body>
 </html>
 
@@ -37,7 +38,7 @@ import Footer from "../components/Footer.astro";
     background: #090909;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100%;
   }
 
   @media (prefers-reduced-motion: reduce) {
