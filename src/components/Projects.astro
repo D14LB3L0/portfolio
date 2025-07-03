@@ -6,6 +6,8 @@ import TailwindIcon from "./icons/TailwindIcon.astro";
 import TypeScriptIcon from "./icons/TypeScriptIcon.astro";
 import ZustandIcon from "./icons/ZustandIcon.astro";
 import SocialPill from "./SocialPill.astro";
+import CIcon from "./icons/CIcon.astro";
+import MongoDBIcon from "./icons/MongoDBIcon.astro";
 
 interface Tag {
   name: string;
@@ -47,6 +49,16 @@ const TAGS = {
     class: "bg-[#231f20] text-[#f5a623]",
     icon: ZustandIcon,
   },
+  C: {
+    name: "C#",
+    class: "bg-[#9b59b6] text-white",
+    icon: CIcon,
+  },
+  MongoDB:{
+    name: "MongoDB",
+    class: "bg-[#2f6b25] text-white",
+    icon: MongoDBIcon,
+  }
 };
 
 const PROJECTS = [
@@ -62,6 +74,8 @@ const PROJECTS = [
       TAGS.ZUSTAND,
       TAGS.SHADCN,
       TAGS.TAILWIND,
+      TAGS.C,
+      TAGS.MongoDB,
     ],
   },
 ];
