@@ -1,9 +1,11 @@
 ---
+import CodeIcon from "./icons/CodeIcon.astro";
 import ReactIcon from "./icons/ReactIcon.astro";
 import ShadcnIcon from "./icons/ShadcnIcon.astro";
 import TailwindIcon from "./icons/TailwindIcon.astro";
 import TypeScriptIcon from "./icons/TypeScriptIcon.astro";
 import ZustandIcon from "./icons/ZustandIcon.astro";
+import SocialPill from "./SocialPill.astro";
 
 interface Tag {
   name: string;
@@ -92,6 +94,16 @@ const PROJECTS = [
         src={project.image}
         alt={`Captura de pantalla del proyecto ${project.title}`}
       />
+      <div class="flex justify-center items-center gap-4 my-6">
+        <SocialPill href="https://github.com/D14LB3L0/ecoTrueke-webapp">
+          <CodeIcon class="size-4 lg:size-6" />
+          FrontEnd Code
+        </SocialPill>
+        <SocialPill href="https://github.com/D14LB3L0/ecoTrueke-api">
+          <CodeIcon class="size-4 lg:size-6" />
+          BackEnd Code
+        </SocialPill>
+      </div>
     </article>
   ))
 }
