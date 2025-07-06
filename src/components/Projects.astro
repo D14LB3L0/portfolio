@@ -8,6 +8,8 @@ import ZustandIcon from "./icons/ZustandIcon.astro";
 import SocialPill from "./SocialPill.astro";
 import CIcon from "./icons/CIcon.astro";
 import MongoDBIcon from "./icons/MongoDBIcon.astro";
+import FlutterIcon from "./icons/FlutterIcon.astro";
+import DartIcon from "./icons/DartIcon.astro";
 
 interface Tag {
   name: string;
@@ -22,6 +24,9 @@ interface Project {
   github: string;
   image: string;
   tags: Tag[];
+  urlFront: string;
+  urlBack?: string;
+  manyImages?: string[];
 }
 const TAGS = {
   REACT: {
@@ -54,11 +59,22 @@ const TAGS = {
     class: "bg-[#9b59b6] text-white",
     icon: CIcon,
   },
-  MongoDB:{
+  MongoDB: {
     name: "MongoDB",
     class: "bg-[#2f6b25] text-white",
     icon: MongoDBIcon,
-  }
+  },
+  FLUTTER: {
+    name: "Flutter",
+    class: "bg-[#042a47] text-white", // azul más oscuro que el original
+    icon: FlutterIcon,
+  },
+
+  DART: {
+    name: "Dart",
+    class: "bg-[#06345f] text-white", // azul oscuro apagado
+    icon: DartIcon,
+  },
 };
 
 const PROJECTS = [
@@ -77,6 +93,22 @@ const PROJECTS = [
       TAGS.C,
       TAGS.MongoDB,
     ],
+    urlFront: "https://github.com/D14LB3L0/ecoTrueke-webapp",
+    urlBack: "https://github.com/D14LB3L0/ecoTrueke-api",
+  },
+  {
+    title: "MoviesApp",
+    description:
+      "moviesApp is a Flutter-based mobile application that displays popular and upcoming movies using The Movie Database (TMDB) API. Users can browse movie posters, view details, and discover trending content in a user-friendly interface.",
+    github: "hhttps://github.com/D14LB3L0/movies-app", // ajusta si el link es diferente
+    image: "/projects/moviesApp.webp",
+    tags: [TAGS.FLUTTER, TAGS.DART],
+    urlFront: "https://github.com/D14LB3L0/movies-app",
+    manyImages: [
+      "/projects/moviesApp.webp",
+      "/projects/moviesApp2.webp",
+      "/projects/moviesApp3.webp",
+    ],
   },
 ];
 ---
@@ -88,9 +120,11 @@ const PROJECTS = [
         <h3 class="text-2xl font-semibold text-yellow-200 mb-2">
           {project.title}
         </h3>
-        <p class="text-lg mb-4 text-pretty text-gray-200">{project.description}</p>
+        <p class="text-lg mb-4 text-pretty text-gray-200">
+          {project.description}
+        </p>
 
-        <ul class="flex flex-wrap gap-2 flex-row mb-2">
+        <ul class="flex flex-wrap gap-2 flex-row mb-6">
           {project.tags.map((tag) => (
             <li>
               <span
@@ -103,20 +137,47 @@ const PROJECTS = [
           ))}
         </ul>
       </div>
-      <img
-        class="rounded shadow-2xl shadow-white/10"
-        src={project.image}
-        alt={`Captura de pantalla del proyecto ${project.title}`}
-      />
+      <div
+        class={`${project.manyImages ? "flex justify-between" : "flex justify-center items-center"}  hidden md:flex`}
+      >
+        {project.manyImages ? (
+          <>
+            {project.manyImages.map((img, index) => (
+              <img
+                class="rounded shadow-2xl shadow-white/10 max-h-[416px]"
+                src={img}
+                alt={`Screenshot ${index + 1} of project ${project.title}`}
+              />
+            ))}
+          </>
+        ) : (
+          <img
+            class="rounded shadow-2xl shadow-white/10 max-h-[416px]"
+            src={project.image}
+            alt={`Captura de pantalla del proyecto ${project.title}`}
+          />
+        )}
+      </div>
+
+      <div class="md:hidden flex justify-center items-center">
+        <img
+          class="rounded shadow-2xl shadow-white/10 max-h-[416px]"
+          src={project.image}
+          alt={`Captura de pantalla del proyecto ${project.title}`}
+        />
+      </div>
+
       <div class="flex justify-center items-center gap-4 my-6">
-        <SocialPill href="https://github.com/D14LB3L0/ecoTrueke-webapp">
-          <CodeIcon class="size-4 lg:size-6" />
+        <SocialPill href={project.urlFront}>
+          <CodeIcon class="size-4 md:size-6" />
           FrontEnd Code
         </SocialPill>
-        <SocialPill href="https://github.com/D14LB3L0/ecoTrueke-api">
-          <CodeIcon class="size-4 lg:size-6" />
-          BackEnd Code
-        </SocialPill>
+        {project.urlBack && (
+          <SocialPill href={project.urlBack}>
+            <CodeIcon class="size-4 md:size-6" />
+            BackEnd Code
+          </SocialPill>
+        )}
       </div>
     </article>
   ))
