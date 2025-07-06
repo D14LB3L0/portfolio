@@ -1,0 +1,184 @@
+---
+import CodeIcon from "./icons/CodeIcon.astro";
+import ReactIcon from "./icons/ReactIcon.astro";
+import ShadcnIcon from "./icons/ShadcnIcon.astro";
+import TailwindIcon from "./icons/TailwindIcon.astro";
+import TypeScriptIcon from "./icons/TypeScriptIcon.astro";
+import ZustandIcon from "./icons/ZustandIcon.astro";
+import SocialPill from "./SocialPill.astro";
+import CIcon from "./icons/CIcon.astro";
+import MongoDBIcon from "./icons/MongoDBIcon.astro";
+import FlutterIcon from "./icons/FlutterIcon.astro";
+import DartIcon from "./icons/DartIcon.astro";
+
+interface Tag {
+  name: string;
+  class: string;
+  icon: any; // Puede ser un componente SVG o JSX
+}
+
+interface Project {
+  title: string;
+  description: string;
+  link?: string;
+  github: string;
+  image: string;
+  tags: Tag[];
+  urlFront: string;
+  urlBack?: string;
+  manyImages?: string[];
+}
+const TAGS = {
+  REACT: {
+    name: "React",
+    class: "bg-[#0d1117] text-[#61dafb]",
+    icon: ReactIcon,
+  },
+  TYPESCRIPT: {
+    name: "TypeScript",
+    class: "bg-[#002e52] text-white",
+    icon: TypeScriptIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: TailwindIcon,
+  },
+  SHADCN: {
+    name: "Shadcn UI",
+    class: "bg-[#1c1c1c] text-white",
+    icon: ShadcnIcon,
+  },
+  ZUSTAND: {
+    name: "Zustand",
+    class: "bg-[#231f20] text-[#f5a623]",
+    icon: ZustandIcon,
+  },
+  C: {
+    name: "C#",
+    class: "bg-[#9b59b6] text-white",
+    icon: CIcon,
+  },
+  MongoDB: {
+    name: "MongoDB",
+    class: "bg-[#2f6b25] text-white",
+    icon: MongoDBIcon,
+  },
+  FLUTTER: {
+    name: "Flutter",
+    class: "bg-[#042a47] text-white", // azul más oscuro que el original
+    icon: FlutterIcon,
+  },
+
+  DART: {
+    name: "Dart",
+    class: "bg-[#06345f] text-white", // azul oscuro apagado
+    icon: DartIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "EcoTrueke",
+    description:
+      "EcoTrueke is a web platform that allows users to exchange second-hand products through a proposal-based system. Users can browse products, send trade offers, and manage their exchange requests with other members.",
+    github: "https://github.com/D14LB3L0/ecoTrueke-webapp",
+    image: "/projects/ecoTrueke.webp",
+    tags: [
+      TAGS.REACT,
+      TAGS.TYPESCRIPT,
+      TAGS.ZUSTAND,
+      TAGS.SHADCN,
+      TAGS.TAILWIND,
+      TAGS.C,
+      TAGS.MongoDB,
+    ],
+    urlFront: "https://github.com/D14LB3L0/ecoTrueke-webapp",
+    urlBack: "https://github.com/D14LB3L0/ecoTrueke-api",
+  },
+  {
+    title: "MoviesApp",
+    description:
+      "moviesApp is a Flutter-based mobile application that displays popular and upcoming movies using The Movie Database (TMDB) API. Users can browse movie posters, view details, and discover trending content in a user-friendly interface.",
+    github: "hhttps://github.com/D14LB3L0/movies-app", // ajusta si el link es diferente
+    image: "/projects/moviesApp.webp",
+    tags: [TAGS.FLUTTER, TAGS.DART],
+    urlFront: "https://github.com/D14LB3L0/movies-app",
+    manyImages: [
+      "/projects/moviesApp.webp",
+      "/projects/moviesApp2.webp",
+      "/projects/moviesApp3.webp",
+    ],
+  },
+];
+---
+
+{
+  PROJECTS.map((project: Project) => (
+    <article>
+      <div>
+        <h3 class="text-2xl font-semibold text-yellow-200 mb-2">
+          {project.title}
+        </h3>
+        <p class="text-lg mb-4 text-pretty text-gray-200">
+          {project.description}
+        </p>
+
+        <ul class="flex flex-wrap gap-2 flex-row mb-6">
+          {project.tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+              >
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div
+        class={`${project.manyImages ? "flex justify-between" : "flex justify-center items-center"}  hidden md:flex`}
+      >
+        {project.manyImages ? (
+          <>
+            {project.manyImages.map((img, index) => (
+              <img
+                class="rounded shadow-2xl shadow-white/10 max-h-[416px]"
+                src={img}
+                alt={`Screenshot ${index + 1} of project ${project.title}`}
+              />
+            ))}
+          </>
+        ) : (
+          <img
+            class="rounded shadow-2xl shadow-white/10 max-h-[416px]"
+            src={project.image}
+            alt={`Captura de pantalla del proyecto ${project.title}`}
+          />
+        )}
+      </div>
+
+      <div class="md:hidden flex justify-center items-center">
+        <img
+          class="rounded shadow-2xl shadow-white/10 max-h-[416px]"
+          src={project.image}
+          alt={`Captura de pantalla del proyecto ${project.title}`}
+        />
+      </div>
+
+      <div class="flex justify-center items-center gap-4 my-6">
+        <SocialPill href={project.urlFront}>
+          <CodeIcon class="size-4 md:size-6" />
+          FrontEnd Code
+        </SocialPill>
+        {project.urlBack && (
+          <SocialPill href={project.urlBack}>
+            <CodeIcon class="size-4 md:size-6" />
+            BackEnd Code
+          </SocialPill>
+        )}
+      </div>
+    </article>
+  ))
+}

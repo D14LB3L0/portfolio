@@ -1,0 +1,24 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCIE = [
+  {
+    date: "Jul 2024 – Apr 2025",
+    title: "Full Stack Developer at Wayni",
+    description:
+      "Led the development of scalable applications using React, .NET C#, and Docker. Integrated DevOps practices with GitHub Actions and deployed to AWS, Azure, and Hostinger. Optimized databases and implemented APIs with services like Stripe, Twilio, and Strapi.",
+    link: "",
+  },
+ 
+];
+---
+
+<ol class="relative border-s border-gray-200 ml-3">
+  {
+    EXPERIENCIE.map((experience) => (
+      <li class="mb-10 ms-4">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
