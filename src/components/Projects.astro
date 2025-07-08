@@ -10,6 +10,7 @@ import CIcon from "./icons/CIcon.astro";
 import MongoDBIcon from "./icons/MongoDBIcon.astro";
 import FlutterIcon from "./icons/FlutterIcon.astro";
 import DartIcon from "./icons/DartIcon.astro";
+import SQLiteIcon from "./icons/SQLiteIcon.astro";
 
 interface Tag {
   name: string;
@@ -68,11 +69,15 @@ const TAGS = {
     class: "bg-[#042a47] text-white", // azul más oscuro que el original
     icon: FlutterIcon,
   },
-
   DART: {
     name: "Dart",
     class: "bg-[#06345f] text-white", // azul oscuro apagado
     icon: DartIcon,
+  },
+  SQLITE: {
+    name: "SQLite",
+    class: "bg-[#1B1F23] text-white ", // gris oscuro elegante
+    icon: SQLiteIcon,
   },
 };
 
@@ -112,7 +117,7 @@ const PROJECTS = [
     description:
       "ScanApp is a Flutter application that allows users to scan QR codes and store a history of scanned geolocations and websites.",
     image: "/projects/scanApp3.webp",
-    tags: [TAGS.FLUTTER, TAGS.DART],
+    tags: [TAGS.FLUTTER, TAGS.DART, TAGS.SQLITE],
     urlFront: "https://github.com/D14LB3L0/qrScanner-app",
     manyImages: [
       "/projects/scanApp.webp",
