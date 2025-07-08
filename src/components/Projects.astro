@@ -21,7 +21,6 @@ interface Project {
   title: string;
   description: string;
   link?: string;
-  github: string;
   image: string;
   tags: Tag[];
   urlFront: string;
@@ -82,7 +81,6 @@ const PROJECTS = [
     title: "EcoTrueke",
     description:
       "EcoTrueke is a web platform that allows users to exchange second-hand products through a proposal-based system. Users can browse products, send trade offers, and manage their exchange requests with other members.",
-    github: "https://github.com/D14LB3L0/ecoTrueke-webapp",
     image: "/projects/ecoTrueke.webp",
     tags: [
       TAGS.REACT,
@@ -100,7 +98,6 @@ const PROJECTS = [
     title: "MoviesApp",
     description:
       "moviesApp is a Flutter-based mobile application that displays popular and upcoming movies using The Movie Database (TMDB) API. Users can browse movie posters, view details, and discover trending content in a user-friendly interface.",
-    github: "hhttps://github.com/D14LB3L0/movies-app", // ajusta si el link es diferente
     image: "/projects/moviesApp.webp",
     tags: [TAGS.FLUTTER, TAGS.DART],
     urlFront: "https://github.com/D14LB3L0/movies-app",
@@ -108,6 +105,19 @@ const PROJECTS = [
       "/projects/moviesApp.webp",
       "/projects/moviesApp2.webp",
       "/projects/moviesApp3.webp",
+    ],
+  },
+  {
+    title: "ScanApp",
+    description:
+      "ScanApp is a Flutter application that allows users to scan QR codes and store a history of scanned geolocations and websites.",
+    image: "/projects/scanApp3.webp",
+    tags: [TAGS.FLUTTER, TAGS.DART],
+    urlFront: "https://github.com/D14LB3L0/qrScanner-app",
+    manyImages: [
+      "/projects/scanApp.webp",
+      "/projects/scanApp3.webp",
+      "/projects/scanApp2.webp",
     ],
   },
 ];
